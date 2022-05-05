@@ -19,6 +19,15 @@ const ToggleButton = styled.button`
   cursor: pointer;
   background: var(--color-bg-toggle);
   transition: background 0.25s ease-in-out;
+  &:focus {
+    outline-offset: 5px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  &:hover {
+    box-shadow: 0 0 5px 2px var(--color-bg-toggle);
+  },
 `;
 
 enum Themes {
@@ -27,11 +36,11 @@ enum Themes {
 }
 
 const toggleThumbStyle = (activeTheme: Themes) => {
+  const transformValue =
+    activeTheme === Themes.dark
+      ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
+      : "none";
 
-    const transformValue = activeTheme === Themes.dark
-    ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
-    : "none";
-    
   return styled.span`
     position: absolute;
     top: var(--toggle-padding);
@@ -52,10 +61,17 @@ const ThemeToggle = () => {
     document.body.dataset.theme = activeTheme;
   }, [activeTheme]);
 
-  const ToggleThumb = toggleThumbStyle(activeTheme)
+  const ToggleThumb = toggleThumbStyle(activeTheme);
+  console.log(activeTheme);
 
   return (
     <ToggleButton
+      aria-label={`Change to ${
+        activeTheme === Themes.light ? Themes.dark : Themes.light
+      } mode`}
+      title={`Change to ${
+        activeTheme === Themes.light ? Themes.dark : Themes.light
+      } mode`}
       type="button"
       onClick={() =>
         setActiveTheme(
