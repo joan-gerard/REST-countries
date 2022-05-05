@@ -21,33 +21,49 @@ const ToggleButton = styled.button`
   transition: background 0.25s ease-in-out;
 `;
 
-const ToggleThumb = styled.span`
-  position: absolute;
-  top: var(--toggle-padding);
-  left: var(--toggle-padding);
-  width: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
-  height: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
-  border-radius: 50%;
-  background: white;
-  transition: transform 0.25s ease-in-out;
-  transform: ${(p) =>
-    p.activeTheme === "dark"
-      ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
-      : "none"};
-`;
+enum Themes {
+  light = "light",
+  dark = "dark",
+}
+
+const toggleThumbStyle = (activeTheme: Themes) => {
+
+    const transformValue = activeTheme === Themes.dark
+    ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
+    : "none";
+    
+  return styled.span`
+    position: absolute;
+    top: var(--toggle-padding);
+    left: var(--toggle-padding);
+    width: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
+    height: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.25s ease-in-out;
+    transform: ${transformValue};
+  `;
+};
 
 const ThemeToggle = () => {
-  const [activeTheme, setActiveTheme] = useState<string>("light");
-  const inactiveTheme = activeTheme === "light" ? "dark" : "light";
+  const [activeTheme, setActiveTheme] = useState<Themes>(Themes.light);
 
   useEffect(() => {
-    console.log('USE EFFECT', document.body);
     document.body.dataset.theme = activeTheme;
   }, [activeTheme]);
 
+  const ToggleThumb = toggleThumbStyle(activeTheme)
+
   return (
-    <ToggleButton type="button" onClick={() => setActiveTheme(inactiveTheme)}>
-      <ToggleThumb activeTheme={activeTheme} />
+    <ToggleButton
+      type="button"
+      onClick={() =>
+        setActiveTheme(
+          activeTheme === Themes.light ? Themes.dark : Themes.light
+        )
+      }
+    >
+      <ToggleThumb />
       <span>🌙</span>
       <span>☀️</span>
     </ToggleButton>
