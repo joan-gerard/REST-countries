@@ -17,7 +17,7 @@ const ToggleButton = styled.button`
   border: 0;
   border-radius: calc(var(--toggle-width) / 2);
   cursor: pointer;
-  background: var(--color-bg-toggle);
+  background: var(--color-bg-toggle-btn);
   transition: background 0.25s ease-in-out;
   &:focus {
     outline-offset: 5px;
@@ -26,7 +26,7 @@ const ToggleButton = styled.button`
     outline: none;
   }
   &:hover {
-    box-shadow: 0 0 5px 2px var(--color-bg-toggle);
+    box-shadow: 0 0 5px 2px var(--color-bg-toggle-btn);
   },
 `;
 
@@ -62,7 +62,6 @@ const ThemeToggle = () => {
   }, [activeTheme]);
 
   const ToggleThumb = toggleThumbStyle(activeTheme);
-  console.log(activeTheme);
 
   return (
     <ToggleButton

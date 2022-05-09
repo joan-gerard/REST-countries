@@ -1,25 +1,31 @@
 import Image from "next/image";
+import Head from "next/head";
 import styled from "@emotion/styled";
+import Header from "../components/Header";
 import ThemeToggle from "../components/ThemeToggle";
+import Main from "../components/Main";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 35vh;
 `;
 
 export default function Home() {
   return (
-    <Container>
-      <ThemeToggle />
-      <h1>This is my Page</h1>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
-      </p>
-    </Container>
+    <>
+      <Head>
+        <title>Where In The World?</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Container>
+        <Header />
+        <Main />
+      </Container>
+    </>
   );
 }

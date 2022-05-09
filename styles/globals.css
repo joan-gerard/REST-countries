@@ -2,24 +2,42 @@ body,
 body[data-theme="light"] {
   --color-text-primary: #27201a;
   --color-text-secondary: #076963;
-  --color-bg-primary: #fff;
-  --color-bg-toggle: #1e90ff;
+  --color-bg-header: #ffffff;
+  --color-bg-main: #fafafa;
+  --color-bg-toggle-btn: #1e90ff;
+  --color-element: #2b3945;
 }
 
 body[data-theme="dark"] {
   --color-text-primary: #e3e3e3;
   --color-text-secondary: #ff6b00;
-  --color-bg-primary: #15232d;
-  --color-bg-toggle: #a9a9a9;
+  --color-bg-header: #2b3945;
+  --color-bg-main: #202c37;
+  --color-bg-toggle-btn: #a9a9a9;
+  --color-element: #ffffff;
 }
 
 body {
-  background: var(--color-bg-primary);
+  padding: 0;
+  margin: 0;
+  background: var(--color-bg-main);
   color: var(--color-text-primary);
-  font-family: sans-serif;
-  transition: background 0.50s ease-in-out;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  transition: background 0.1s ease-in-out;
 }
 
 h1 {
   color: var(--color-text-secondary);
+}
+
+img {
+  /* object-fit: cover; */
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.InfoContainer > p {
+  margin: 0.5em 0;
 }
