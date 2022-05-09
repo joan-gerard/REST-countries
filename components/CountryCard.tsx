@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Country } from "../interface";
 
 import styled from "@emotion/styled";
 
@@ -16,13 +17,17 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
-  max-height: 120px;
+  max-height: 130px;
 `;
 const InfoContainer = styled.div`
   padding: 0 1.5em;
 `;
 
-const CountryCard = ({ country }) => {
+type Props = {
+  country: Country
+}
+
+const CountryCard: React.FC<Props> = ({ country }) => {
   return (
     <Card>
       <ImageContainer>

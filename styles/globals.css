@@ -41,3 +41,38 @@ img {
 .InfoContainer > p {
   margin: 0.5em 0;
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-bg-header);
+  width: 400px;
+  height: 40px;
+  box-shadow: 0.5px 1px 6px 0.5px rgba(0, 0, 0, 0.07);
+  border-radius: 5px;
+}
+
+.search-bar__input {
+  background: url("../public/search2.svg") left no-repeat;
+  padding-left: 2.8em;
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+::placeholder {
+  font-family: "Nunito Sans", sans-serif;
+  color: #838691;
+}
+
+.search-bar__submit-btn {
+  display: none;
+}
+
+.search-bar__clear-btn {
+  border: none;
+  color: inherit;
+  background: none;
+}
